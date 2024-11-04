@@ -1,24 +1,28 @@
-const {Produto} = require("./Produto");
+const { Produto } = require("./Produto");
 
-class Pedido{
+class Pedido {
     #produtos
-    constructor(){
+    constructor() {
         this.#produtos = []
         Object.freeze(this)
     }
-    adicionarProduto(produto){
-        if(produto instanceof Produto){
+    adicionarProduto(produto) {
+        if (produto instanceof Produto) {
             this.#produtos.push(produto)
-        }else{
+        } else {
             console.log("Somento objetos do tipo Produto podem ser adicionados!")
         }
-    }    
-        mostrarPedido(){
-            console.log("Resumo do pedido")
-            this.#produtos.forEach(produto =>{
-                console.log(produto.getInfoPruduto())
-            })
-        }
     }
+    mostrarPedido() {
+        console.log("Resumo do pedido")
+        this.#produtos.forEach(produto => {
+            console.log(produto.getInfoProduto())
+        })
+        console.log(`Total = ${this.calcularTotal()}`)
+    }
+    calcularTotal() {
+        return this.#produtos.reduce((total, produto) => total + produto.getPreco, 0)
+    }
+}
 
-module.exports = {Pedido}
+module.exports = { Pedido }
