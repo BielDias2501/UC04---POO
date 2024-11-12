@@ -20,7 +20,7 @@ class Veiculo{
         this.#ano = ano
     }
     getInfo(){
-        console.log (`Marca: ${this.getMarca}, Ano: ${this.getAno}`)
+        console.log (`Ano: ${this.getAno}, Marca: ${this.getMarca}`)
     }
     calcularValor(){
         throw new Error('Método calcularValor() deve ser implementado.')
